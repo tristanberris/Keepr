@@ -10,25 +10,83 @@
         <span>&times;</span>
       </button>
     </div>
+    <!-- Button trigger modal -->
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#keepModal"
+    >Add to Vault</button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="keepModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Add to Vault</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="dropdown">
+              <button
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >Modals</button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <vaultName v-for="vaultName in Vaults" :vaultData="vaultName" :key="vaultName.id"></vaultName>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 
 <script>
+import vaultName from "../components/vaultName";
 export default {
   name: "keep",
   props: ["keepData"],
   data() {
     return {};
   },
+  mounted() {
+    this.$store.dispatch("getVaults");
+    console.log(this.$store.state.vaults);
+  },
 
-  computed: {},
+  computed: {
+    Vaults() {
+      return this.$store.state.vaults;
+    }
+  },
   methods: {
     deleteKeep() {
       this.$store.dispatch("deleteKeep", this.keepData.id);
     }
   },
-  components: {}
+  components: {
+    vaultName
+  }
 };
 </script>
 
