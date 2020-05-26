@@ -1,6 +1,6 @@
 <template>
-  <div class="vaultKeeps">
-    <div class="keep col-4">
+  <div class="vaultKeeps col-4">
+
       <div class="card bg-dark text-white shadow">
         <img :src="vaultKeepData.img" class="card-img image-size" alt="..." />
         <div class="card-img-overlay text-center">
@@ -10,7 +10,6 @@
         <!-- <button type="button" class="close text-middle text-danger" @click="deleteKeep()">
           <span>&times;</span>
         </button> -->
-      </div>
     </div>
   </div>
 </template>
