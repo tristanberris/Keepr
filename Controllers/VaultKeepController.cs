@@ -59,6 +59,7 @@ namespace Keepr.Controllers
             {
                 var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
                 newVaultKeep.UserId = userId;
+                
                 return Ok(_vks.Create(newVaultKeep));
             }
             catch (Exception e)

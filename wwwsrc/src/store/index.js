@@ -91,6 +91,15 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async addToVault({commit, dispatch}, vault){
+      try {
+        console.log(vault)
+        await api.post("VaultKeep", vault)
+      } catch (error) {
+        console.error(error)
+      }
+      
+    },
     async getVaultKeepsById({commit, dispatch}, vaultKeepId){
       try {
         let res = await api.get("VaultKeep/" + vaultKeepId)

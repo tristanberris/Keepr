@@ -15,13 +15,13 @@
       type="button"
       class="btn btn-primary"
       data-toggle="modal"
-      data-target="#keepModal"
+      :data-target="'#keepModal-'+keepData.id"
     >Add to Vault</button>
 
     <!-- Modal -->
     <div
       class="modal fade"
-      id="keepModal"
+      :id="'keepModal-'+keepData.id"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
@@ -44,15 +44,15 @@
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-              >Modals</button>
+              >Vaults</button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <vaultName v-for="vaultName in Vaults" :vaultData="vaultName" :key="vaultName.id"></vaultName>
+                <vaultName v-for="vault in Vaults" :vaultData="vault" :keep="keepData" :key="vault.id"></vaultName>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+          
           </div>
         </div>
       </div>
@@ -67,7 +67,9 @@ export default {
   name: "keep",
   props: ["keepData"],
   data() {
-    return {};
+    return {
+      vaultKeepData: {  }
+    };
   },
   mounted() {
     this.$store.dispatch("getVaults");
@@ -77,7 +79,8 @@ export default {
   computed: {
     Vaults() {
       return this.$store.state.vaults;
-    }
+    },
+
   },
   methods: {
     deleteKeep() {

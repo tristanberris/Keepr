@@ -80,7 +80,7 @@
     <!-- end modal -->
     <div class="row">
       <!-- <div class="col-3"> -->
-       <keep v-for="keep in Keeps" :keepData="keep" :key="keep.id"></keep>
+       <keep v-for="keep in Keeps" :keepData="keep"  :key="keep.id"></keep>
 
       </div>
     </div>
