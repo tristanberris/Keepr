@@ -1,6 +1,6 @@
 <template>
   <div class="home container-fluid">
-    <h1>This is the homepage :)</h1>
+    <h1 class="text-center ">KEEPR</h1>
     <!-- Button trigger modal -->
     <button
       type="button"
@@ -121,3 +121,6 @@ export default {
   }
 };
 </script>
+<style>
+
+</style>
